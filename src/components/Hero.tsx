@@ -1,4 +1,6 @@
+// src/components/Hero.tsx
 "use client"
+
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 
@@ -13,7 +15,7 @@ export function Hero() {
         Je suis Kortex, Développeur IA
       </motion.h1>
       <p className="text-muted-foreground max-w-xl mx-auto">
-        Créateur de modèles IA, formateur en Deep Learning et bâtisseur de solutions pour l'Afrique.
+        Créateur de modèles IA, formateur en Deep Learning et bâtisseur de solutions pour l&apos;Afrique.
       </p>
       <Button asChild>
         <a href="/projects">Voir mes projets</a>

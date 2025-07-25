@@ -7,33 +7,6 @@ import { ArrowRight, Sparkles, Brain, Code2 } from 'lucide-react';
 export default function HomePage() {
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Background animé */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-        {/* Particules flottantes */}
-        <div className="absolute inset-0">
-          {[...Array(50)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-white/20 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [-20, -100],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: Math.random() * 3 + 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
       {/* Contenu principal */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center py-32 px-4">
         <motion.div
@@ -93,5 +66,6 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 

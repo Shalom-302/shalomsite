@@ -9,70 +9,70 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const whatsappNumber = "+33123456789"; // Remplacez par votre numéro
-  const whatsappMessage = "Bonjour Kortex, je souhaite discuter d&apos;un projet IA...";
+  const whatsappMessage = "Bonjour Kortex, je souhaite discuter d'un projet IA...";
   const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <div className="py-20 max-w-4xl mx-auto">
+    <div className="py-20 max-w-4xl mx-auto text-white">
       <header className="text-center mb-16">
-        <h1 className="text-5xl font-extrabold tracking-tight bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="text-5xl font-extrabold tracking-tight bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
           Contactez-moi
         </h1>
-        <p className="mt-4 text-xl text-gray-600">
+        <p className="mt-4 text-xl text-gray-300">
           Discutons de votre prochain projet IA
         </p>
       </header>
 
       <div className="grid md:grid-cols-2 gap-12">
         {/* Formulaire */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-gray-800">Envoyez un message</h2>
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <h2 className="text-2xl font-bold text-white mb-6">Envoyez un message</h2>
           <form className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                 Nom complet
               </label>
               <input
                 type="text"
                 name="name"
                 id="name"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors text-gray-900"
                 placeholder="Votre nom"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                 Email
               </label>
               <input
                 type="email"
                 name="email"
                 id="email"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors text-gray-900"
                 placeholder="votre@email.com"
               />
             </div>
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
                 Sujet
               </label>
               <input
                 type="text"
                 name="subject"
                 id="subject"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors text-gray-900"
                 placeholder="Projet IA, Formation, Collaboration..."
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                 Message
               </label>
               <textarea
                 name="message"
                 id="message"
                 rows={5}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors resize-none"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors resize-none text-gray-900"
                 placeholder="Décrivez votre projet ou votre question..."
               />
             </div>
@@ -87,63 +87,59 @@ export default function ContactPage() {
         </div>
 
         {/* Informations de contact */}
-        <div className="space-y-8">
-          <h2 className="text-2xl font-bold text-gray-800">Autres moyens de contact</h2>
+        <div className="space-y-6">
+          <h2 className="text-2xl font-bold text-white">Autres moyens de contact</h2>
           
           {/* WhatsApp */}
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 p-6 bg-green-50 border border-green-200 rounded-xl hover:bg-green-100 transition-colors group"
+            className="flex items-center gap-4 p-6 bg-green-500/10 border border-green-500/20 rounded-xl hover:bg-green-500/20 transition-colors group"
           >
             <div className="bg-green-500 p-3 rounded-full text-white group-hover:scale-110 transition-transform">
               <MessageCircle size={24} />
             </div>
             <div>
-              <h3 className="font-semibold text-green-800">WhatsApp</h3>
-              <p className="text-green-600">Réponse rapide garantie</p>
-              <p className="text-sm text-green-500">{whatsappNumber}</p>
+              <h3 className="font-semibold text-green-400">WhatsApp</h3>
+              <p className="text-green-300">Réponse rapide garantie</p>
+              <p className="text-sm text-green-200">{whatsappNumber}</p>
             </div>
           </a>
 
           {/* Email */}
-          <div className="flex items-center gap-4 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+          <div className="flex items-center gap-4 p-6 bg-blue-500/10 border border-blue-500/20 rounded-xl">
             <div className="bg-blue-500 p-3 rounded-full text-white">
               <Mail size={24} />
             </div>
             <div>
-              <h3 className="font-semibold text-blue-800">Email</h3>
-              <p className="text-blue-600">contact@kortexai.dev</p>
+              <h3 className="font-semibold text-blue-400">Email</h3>
+              <p className="text-blue-300">contact@kortexai.dev</p>
             </div>
           </div>
 
           {/* Localisation */}
-          <div className="flex items-center gap-4 p-6 bg-purple-50 border border-purple-200 rounded-xl">
+          <div className="flex items-center gap-4 p-6 bg-purple-500/10 border border-purple-500/20 rounded-xl">
             <div className="bg-purple-500 p-3 rounded-full text-white">
               <MapPin size={24} />
             </div>
             <div>
-              <h3 className="font-semibold text-purple-800">Localisation</h3>
-              <p className="text-purple-600">France, Remote friendly</p>
+              <h3 className="font-semibold text-purple-400">Localisation</h3>
+              <p className="text-purple-300">France, Remote friendly</p>
             </div>
           </div>
 
           {/* Réseaux sociaux */}
-          <div className="pt-6 border-t border-gray-200">
-            <h3 className="font-semibold text-gray-800 mb-4">Suivez-moi</h3>
+          <div className="pt-6 border-t border-white/10">
+            <h3 className="font-semibold text-white mb-4">Suivez-moi</h3>
             <div className="flex gap-4">
               <a href="https://twitter.com/kortexai" target="_blank" rel="noopener noreferrer" 
-                 className="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition-colors">
+                 className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
                 Twitter
               </a>
               <a href="https://linkedin.com/in/kortexai" target="_blank" rel="noopener noreferrer"
-                 className="bg-blue-700 text-white p-3 rounded-lg hover:bg-blue-800 transition-colors">
+                 className="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors">
                 LinkedIn
-              </a>
-              <a href="https://github.com/kortexai" target="_blank" rel="noopener noreferrer"
-                 className="bg-gray-800 text-white p-3 rounded-lg hover:bg-gray-900 transition-colors">
-                GitHub
               </a>
             </div>
           </div>

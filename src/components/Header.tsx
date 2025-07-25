@@ -30,8 +30,8 @@ export default function Header() {
       animate={{ y: 0 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/80 backdrop-blur-md shadow-lg border-b border-gray-200/50' 
-          : 'bg-transparent'
+          ? 'bg-black/80 backdrop-blur-md shadow-lg border-b border-white/10' 
+          : 'bg-black/20 backdrop-blur-sm'
       }`}
     >
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -40,29 +40,21 @@ export default function Header() {
           className="flex items-center gap-2 text-2xl font-bold"
           onClick={() => setIsMenuOpen(false)}
         >
-          <Brain className={scrolled ? 'text-purple-600' : 'text-white'} size={28} />
-          <span className={`bg-gradient-to-r ${
-            scrolled 
-              ? 'from-purple-600 to-blue-600' 
-              : 'from-purple-400 to-blue-400'
-          } bg-clip-text text-transparent`}>
+          <Brain className="text-purple-400" size={28} />
+          <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
             KORTEX
           </span>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-1">
+        <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => {
             const Icon = link.icon;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                  scrolled
-                    ? 'text-gray-700 hover:text-purple-600 hover:bg-purple-50'
-                    : 'text-white/80 hover:text-white hover:bg-white/10'
-                }`}
+                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
               >
                 <Icon size={16} />
                 {link.label}
@@ -74,9 +66,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`md:hidden p-2 rounded-lg transition-colors ${
-            scrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-          }`}
+          className="md:hidden text-white p-2"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -88,7 +78,7 @@ export default function Header() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-lg border-b md:hidden"
+              className="absolute top-full left-0 w-full bg-black/95 backdrop-blur-md shadow-lg border-b border-white/10 md:hidden"
             >
               <div className="container mx-auto px-4 py-4 space-y-2">
                 {navLinks.map((link) => {
@@ -98,7 +88,7 @@ export default function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-colors"
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
                     >
                       <Icon size={18} />
                       {link.label}

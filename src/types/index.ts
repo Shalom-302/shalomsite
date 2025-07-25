@@ -12,11 +12,19 @@ export type Formation = {
   title: string;
   description: string;
   level: 'Débutant' | 'Intermédiaire' | 'Avancé';
+  duration?: string;
+  videoCount?: number;
+  price?: string;
+  thumbnail?: string;
+  videoUrl?: string;
 };
 
 export type Article = {
   id: number;
   title: string;
   summary: string;
-  slug: string; // pour l'URL, ex: /articles/mon-premier-article
+  slug: string;
+  category: string;
+  readTime: string;
+  publishedAt: string;
 };

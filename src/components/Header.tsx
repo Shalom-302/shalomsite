@@ -1,85 +1,115 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Brain, Home, FolderOpen, PlayCircle, FileText, MessageCircle } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
-    { href: "/projects", label: "Projets" },
-    { href: "/formations", label: "Formations" },
-    { href: "/articles", label: "Articles" },
-    { href: "/about", label: "À propos" },
+    { href: "/", label: "Accueil", icon: Home },
+    { href: "/projects", label: "Projets", icon: FolderOpen },
+    { href: "/formations", label: "Formations", icon: PlayCircle },
+    { href: "/articles", label: "Articles", icon: FileText },
+    { href: "/about", label: "À propos", icon: Brain },
+    { href: "/contact", label: "Contact", icon: MessageCircle },
   ];
 
-  const menuVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/80 backdrop-blur-md shadow-lg border-b border-gray-200/50' 
+          : 'bg-transparent'
+      }`}
+    >
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-gray-800" onClick={() => setIsMenuOpen(false)}>
-          KORTEX
+        <Link 
+          href="/" 
+          className="flex items-center gap-2 text-2xl font-bold"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <Brain className={scrolled ? 'text-purple-600' : 'text-white'} size={28} />
+          <span className={`bg-gradient-to-r ${
+            scrolled 
+              ? 'from-purple-600 to-blue-600' 
+              : 'from-purple-400 to-blue-400'
+          } bg-clip-text text-transparent`}>
+            KORTEX
+          </span>
         </Link>
 
-        {/* Menu pour les grands écrans */}
-        <div className="hidden md:flex space-x-6">
-          {navLinks.map((link) => (
-            <div key={link.href} className="relative">
-              <Link href={link.href} className="text-gray-600 hover:text-gray-900">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center space-x-1">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                  scrolled
+                    ? 'text-gray-700 hover:text-purple-600 hover:bg-purple-50'
+                    : 'text-white/80 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <Icon size={16} />
                 {link.label}
               </Link>
-              <motion.div
-                className="absolute bottom-0 left-0 h-0.5 bg-black"
-                initial={{ width: 0 }}
-                whileHover={{ width: "100%" }}
-                transition={{ duration: 0.3 }}
-              />
-            </div>
-          ))}
+            );
+          })}
         </div>
-        
-        {/* Bouton Hamburger pour les petits écrans */}
-        <div className="md:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Ouvrir le menu">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
-            </svg>
-          </button>
-        </div>
-      </nav>
 
-      {/* Menu mobile déroulant */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            className="md:hidden bg-white border-t border-gray-200"
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={menuVariants}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <div className="flex flex-col px-4 py-2 space-y-2">
-              {navLinks.map((link) => (
-                <div key={link.href} className="relative">
-                  <Link
-                    href={link.href}
-                    className="text-gray-600 hover:text-gray-900 py-2"
-                    onClick={() => setIsMenuOpen(false)} // Ferme le menu après un clic
-                  >
-                    {link.label}
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className={`md:hidden p-2 rounded-lg transition-colors ${
+            scrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
+          }`}
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-lg border-b md:hidden"
+            >
+              <div className="container mx-auto px-4 py-4 space-y-2">
+                {navLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-colors"
+                    >
+                      <Icon size={18} />
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+    </motion.header>
   );
 }

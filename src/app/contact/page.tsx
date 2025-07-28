@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const whatsappNumber = "+33123456789"; // Remplacez par votre numéro
+  const whatsappNumber = "+2250712116258"; // Remplacez par votre numéro
   const whatsappMessage = "Bonjour Kortex, je souhaite discuter d'un projet IA...";
   const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -19,7 +19,7 @@ export default function ContactPage() {
           Contactez-moi
         </h1>
         <p className="mt-4 text-xl text-gray-300">
-          Discutons de votre prochain projet IA
+          Discutons de votre prochain projet 
         </p>
       </header>
 
@@ -114,7 +114,7 @@ export default function ContactPage() {
             </div>
             <div>
               <h3 className="font-semibold text-blue-400">Email</h3>
-              <p className="text-blue-300">contact@kortexai.dev</p>
+              <p className="text-blue-300">shalomtehe219@gmail.com</p>
             </div>
           </div>
 
@@ -125,7 +125,7 @@ export default function ContactPage() {
             </div>
             <div>
               <h3 className="font-semibold text-purple-400">Localisation</h3>
-              <p className="text-purple-300">France, Remote friendly</p>
+              <p className="text-purple-300">Ivory Coast, Remote friendly</p>
             </div>
           </div>
 
@@ -133,11 +133,11 @@ export default function ContactPage() {
           <div className="pt-6 border-t border-white/10">
             <h3 className="font-semibold text-white mb-4">Suivez-moi</h3>
             <div className="flex gap-4">
-              <a href="https://twitter.com/kortexai" target="_blank" rel="noopener noreferrer" 
-                 className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                Twitter
+              <a href="https://github.com/Shalom-302" target="_blank" rel="noopener noreferrer"
+                 className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
+                GitHub
               </a>
-              <a href="https://linkedin.com/in/kortexai" target="_blank" rel="noopener noreferrer"
+              <a href="https://linkedin.com/in/shalomt" target="_blank" rel="noopener noreferrer"
                  className="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors">
                 LinkedIn
               </a>

@@ -50,9 +50,9 @@ export default function AboutPage() {
           </div>
           <ul className="space-y-2 text-gray-300">
             <li>• <strong>Frontend:</strong> React, Next.js, TypeScript</li>
-            <li>• <strong>IA:</strong> OpenAI API, Vercel AI SDK</li>
+            <li>• <strong>IA:</strong> Langchain GenAI, Machine Learning ,Deep Learning Pytorch</li>
             <li>• <strong>Styling:</strong> Tailwind CSS, Framer Motion</li>
-            <li>• <strong>Backend:</strong> Node.js, Supabase</li>
+            <li>• <strong>Backend:</strong> FastAPI Python, Gin Go</li>
           </ul>
         </div>
 

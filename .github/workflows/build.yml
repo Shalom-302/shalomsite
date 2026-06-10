@@ -27,7 +27,7 @@ jobs:
 
       # GHCR requires a lowercase image name (the owner may contain uppercase).
       - name: Compute lowercase image name
-        run: echo "IMAGE=ghcr.io/$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')/kortexsite" >> "$GITHUB_ENV"
+        run: echo "IMAGE=ghcr.io/$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')/shalomsite" >> "$GITHUB_ENV"
 
       - name: Build & push
         uses: docker/build-push-action@v6

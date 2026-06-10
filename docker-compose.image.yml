@@ -2,7 +2,7 @@
 # see .github/workflows/build.yml). No build on the VPS → no OOM, no hour-long builds.
 #
 # Prerequisites:
-#   - The workflow pushed ghcr.io/shalom-302/kortexsite:latest
+#   - The workflow pushed ghcr.io/shalom-302/shalomsite:latest
 #   - Private repo ⇒ the GHCR package is private by default: either configure a
 #     GHCR registry in Dokploy (user = GitHub login, token = PAT scope
 #     read:packages), OR make the package public.
@@ -11,7 +11,7 @@
 #   Domains: service web, port 3000, host shalom.kortexai.dev, HTTPS.
 services:
   web:
-    image: ghcr.io/shalom-302/kortexsite:latest
+    image: ghcr.io/shalom-302/shalomsite:latest
     # Force a re-pull of :latest on every deploy (otherwise `up -d` keeps the
     # local image and never fetches the new build → site stuck on the old one).
     pull_policy: always

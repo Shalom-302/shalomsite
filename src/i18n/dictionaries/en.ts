@@ -24,7 +24,7 @@ const en = {
     getInTouch: "Get in touch",
   },
   home: {
-    badge: "Backend & AI Software Engineer",
+    badge: "Backend & AI Engineer · FastAPI Specialist · Open Source Maintainer",
     title: "Shalom Tehe",
     buildPrefix: "I build",
     rotating: [
@@ -57,7 +57,7 @@ const en = {
   about: {
     title: "About",
     intro:
-      "Engineer, independent researcher, educator and open-source builder based in Abidjan.",
+      "Engineer, independent researcher, educator and open-source builder based in Abidjan. I design, build, teach and publish.",
     storyHeading: "Story",
     visionHeading: "Vision",
     philosophyHeading: "Engineering philosophy",

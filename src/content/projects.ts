@@ -11,8 +11,8 @@ export const projects: Project[] = [
       en: "Production-ready FastAPI framework",
     },
     description: {
-      fr: "Shaapi est le framework que j'aurais voulu avoir au premier jour de chaque projet. Au lieu de recâbler l'authentification, les migrations, le stockage et le déploiement à chaque fois, une seule commande génère une architecture FastAPI complète, conteneurisée et security-first, prête à scaler. Du prototype à la production sans réécrire l'ossature : c'est ma façon de transformer des années d'ingénierie backend en conventions réutilisables.",
-      en: "Shaapi is the framework I wish I'd had on day one of every project. Instead of re-wiring auth, migrations, storage and deployment every time, a single command scaffolds a complete, containerized, security-first FastAPI architecture that is ready to scale. From prototype to production without rewriting the skeleton: my way of turning years of backend engineering into reusable conventions.",
+      fr: "Shaapi est le framework que j'aurais voulu avoir au premier jour de chaque projet. Au lieu de recâbler l'authentification, les migrations, le stockage et le déploiement à chaque fois, une seule commande génère une architecture FastAPI complète, conteneurisée et security-first, prête à scaler. Livré « batteries included » (PostgreSQL, Redis, MinIO, JWT, RBAC, Docker), publié et maintenu sur PyPI avec une documentation publique et un guide « Build Your Own Shaapi ». Je construis des outils pour les développeurs, pas seulement des applications.",
+      en: "Shaapi is the framework I wish I'd had on day one of every project. Instead of re-wiring auth, migrations, storage and deployment every time, a single command scaffolds a complete, containerized, security-first FastAPI architecture that is ready to scale. Shipped batteries-included (PostgreSQL, Redis, MinIO, JWT, RBAC, Docker), published and maintained on PyPI with public documentation and a \"Build Your Own Shaapi\" guide. I build tools for developers, not only applications.",
     },
     status: { fr: "Open source · activement développé", en: "Open source · actively developed" },
     features: [
@@ -96,13 +96,17 @@ export const projects: Project[] = [
   },
   {
     slug: "shaai",
-    name: "Shaai",
-    tagline: { fr: "Assistant IA avec agents & RAG", en: "AI assistant with agents & RAG" },
-    description: {
-      fr: "Un assistant IA bâti sur des agents orchestrés, le protocole MCP et une recherche vectorielle Qdrant pour des réponses ancrées dans des données réelles (RAG).",
-      en: "An AI assistant built on orchestrated agents, the MCP protocol and Qdrant vector search for answers grounded in real data (RAG).",
+    name: "ShaAI",
+    tagline: {
+      fr: "Initiative d'ingénierie & de recherche en IA",
+      en: "AI engineering & research initiative",
     },
-    stack: ["MCP", "AI Agents", "Qdrant", "RAG", "LangChain", "FastAPI"],
+    description: {
+      fr: "ShaAI est mon initiative appliquée d'ingénierie et de recherche en IA, centrée sur les systèmes intelligents : architectures agentiques, pipelines de génération augmentée par récupération (RAG), intégrations MCP, automatisation et systèmes de connaissance pilotés par l'IA.",
+      en: "ShaAI is my applied AI engineering and research initiative focused on intelligent systems: agentic architectures, retrieval-augmented generation (RAG) pipelines, MCP integrations, AI-driven automation and knowledge systems.",
+    },
+    status: { fr: "Initiative · en cours", en: "Initiative · ongoing" },
+    stack: ["AI Agents", "MCP", "RAG", "LLM Applications", "LangChain", "Qdrant"],
     links: [{ label: "GitHub", href: site.github }],
   },
   {
@@ -157,28 +161,35 @@ export const projects: Project[] = [
   },
   {
     slug: "sevoil",
-    name: "SEV-OIL",
+    name: "Sevoil",
     tagline: {
-      fr: "Vitrine B2B pour un fournisseur pétrolier",
-      en: "B2B landing site for an oil supplier",
+      fr: "Plateforme de vente et gestion de produits pétroliers",
+      en: "Petroleum sales & management platform",
     },
     description: {
-      fr: "Site vitrine conçu et développé pour SEV-OIL, fournisseur pétrolier basé à Abidjan : distribution en stations-service, ravitaillement de sites miniers et soutage maritime au Port d'Abidjan. Une landing page B2B bilingue (FR/EN), responsive et orientée crédibilité et génération de leads.",
-      en: "Landing site designed and built for SEV-OIL, an Abidjan-based petroleum supplier: service-station distribution, mining-site fuel delivery and marine bunkering at the Port of Abidjan. A bilingual (FR/EN), responsive B2B page focused on credibility and lead generation.",
+      fr: "Plateforme métier réelle pour la vente et la gestion de produits pétroliers. En tant que Lead Backend Engineer, je suis responsable de l'architecture backend, du design des APIs et de la gestion des données pour des workflows métier spécifiques, avec une approche security-first et prête pour la production. La vitrine publique présente l'activité (stations-service, sites miniers, soutage maritime au Port d'Abidjan).",
+      en: "A real-world business platform for the sale and management of petroleum products. As Lead Backend Engineer I own the backend architecture, API design and data management for industry-specific business workflows, with a security-first, production-grade approach. The public landing site presents the business (service stations, mining sites, marine bunkering at the Port of Abidjan).",
     },
-    status: { fr: "En ligne · projet client", en: "Live · client project" },
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "i18n"],
+    status: { fr: "En production · projet client", en: "In production · client project" },
+    stack: [
+      "FastAPI",
+      "PostgreSQL",
+      "API Design",
+      "Security",
+      "Docker",
+      "Next.js",
+    ],
     problem: {
-      fr: "Un acteur pétrolier B2B avait besoin d'une présence en ligne crédible pour présenter ses services et capter des demandes de devis.",
-      en: "A B2B petroleum player needed a credible online presence to showcase its services and capture quote requests.",
+      fr: "Un acteur pétrolier B2B avait besoin d'une plateforme fiable pour gérer la vente de produits pétroliers et d'une présence en ligne crédible.",
+      en: "A B2B petroleum player needed a reliable platform to manage petroleum-product sales and a credible online presence.",
     },
     solution: {
-      fr: "Une vitrine claire et rapide : services détaillés, couverture géographique, processus en cinq étapes, indicateurs de confiance (certifications, partenaires) et formulaire de contact.",
-      en: "A clear, fast landing site: detailed services, geographic coverage, a five-step process, trust indicators (certifications, partners) and a contact form.",
+      fr: "Une architecture backend sécurisée (APIs, gestion des données, workflows métier) et une vitrine claire présentant services, couverture et génération de leads.",
+      en: "A secure backend architecture (APIs, data management, business workflows) and a clear landing site presenting services, coverage and lead generation.",
     },
     impact: {
-      fr: "Une image de marque professionnelle et un canal direct de génération de leads, en français et en anglais.",
-      en: "A professional brand image and a direct lead-generation channel, in French and English.",
+      fr: "Une plateforme prête pour la production et une image de marque professionnelle, en français et en anglais.",
+      en: "A production-ready platform and a professional brand image, in French and English.",
     },
     links: [{ label: "Site en ligne", href: "https://sevoil-site.kortexai.dev/" }],
   },

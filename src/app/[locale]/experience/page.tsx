@@ -41,9 +41,12 @@ export default async function ExperiencePage({
                   <h2 className="text-lg font-semibold tracking-tight">{xp.company}</h2>
                   <p className="text-muted-foreground">{xp.role[locale]}</p>
                 </div>
-                <span className="font-mono text-xs text-muted-foreground">
+                <span className="text-right font-mono text-xs text-muted-foreground">
                   {xp.period[locale]}
                   {xp.current ? " ●" : ""}
+                  {xp.location ? (
+                    <span className="mt-0.5 block text-[0.7rem]">{xp.location[locale]}</span>
+                  ) : null}
                 </span>
               </div>
               <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">

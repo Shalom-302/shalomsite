@@ -22,8 +22,8 @@ export async function generateMetadata({
 }
 
 const summary = {
-  fr: "Ingénieur logiciel Backend & IA avec plus de 3 ans d'expérience dans la conception, le développement et le déploiement d'applications web et de solutions basées sur l'IA. Forte expertise en Python, FastAPI et orchestration d'agents IA avec LangChain. Habitué aux environnements internationaux et anglophones.",
-  en: "Backend and Artificial Intelligence Software Engineer with over 3 years of experience designing, developing and deploying web applications and AI-based solutions. Strong expertise in Python, FastAPI and AI agent orchestration with LangChain. Comfortable in international, English-speaking environments.",
+  fr: "Ingénieur Backend & IA, je construis des systèmes backend prêts pour la production, des applications pilotées par l'IA et des outils pour développeurs. Créateur et mainteneur de Shaapi, un framework FastAPI open source publié sur PyPI, et auteur d'un guide technique sur l'ingénierie de frameworks. Plus de 3 ans à concevoir des architectures scalables en Python, FastAPI et PostgreSQL, et à livrer des systèmes LLM : pipelines RAG, agents IA et intégrations MCP. Je combine ingénierie concrète, leadership technique et enseignement, avec un engagement de long terme pour l'écosystème tech africain. Cet ingénieur conçoit, construit, enseigne et publie.",
+  en: "Backend & AI Software Engineer building production-ready backend systems, AI-powered applications and developer tools. Creator and maintainer of Shaapi, an open-source FastAPI framework published on PyPI, and author of a technical guide on framework engineering. 3+ years designing scalable architectures with Python, FastAPI and PostgreSQL, and shipping LLM-based systems: RAG pipelines, AI agents and MCP integrations. Combines hands-on engineering, technical leadership and software-engineering education, with a long-term commitment to growing the African technology ecosystem. This engineer designs, builds, teaches and publishes.",
 };
 
 export default async function ResumePage({

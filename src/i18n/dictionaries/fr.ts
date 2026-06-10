@@ -26,7 +26,7 @@ const fr: Dictionary = {
     getInTouch: "Me contacter",
   },
   home: {
-    badge: "Ingénieur Backend & IA",
+    badge: "Ingénieur Backend & IA · Spécialiste FastAPI · Mainteneur Open Source",
     title: "Shalom Tehe",
     buildPrefix: "Je construis",
     rotating: [
@@ -59,7 +59,7 @@ const fr: Dictionary = {
   about: {
     title: "À propos",
     intro:
-      "Ingénieur, chercheur indépendant, enseignant et créateur open source basé à Abidjan.",
+      "Ingénieur, chercheur indépendant, enseignant et créateur open source basé à Abidjan. Je conçois, je construis, j'enseigne et je publie.",
     storyHeading: "Parcours",
     visionHeading: "Vision",
     philosophyHeading: "Philosophie d'ingénierie",

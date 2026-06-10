@@ -17,5 +17,5 @@ export const site: SiteConfig = {
   github: "https://github.com/Shalom-302",
   githubUser: "Shalom-302",
   linkedin: "https://www.linkedin.com/in/shalomt",
-  resumePdf: "/Shalom_Tehe_Backend_AI_Engineer.pdf",
+  resumePdf: "/Shalom_Tehe_Resume.pdf",
 };

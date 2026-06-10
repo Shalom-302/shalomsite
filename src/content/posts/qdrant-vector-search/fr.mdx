@@ -1,0 +1,26 @@
+Note de lab : brute, reproductible, en cours.
+
+Je mesure le comportement de Qdrant sous des charges RAG réalistes : beaucoup de petites
+requêtes avec filtres de métadonnées, pas seulement de la recherche de plus proches voisins.
+
+## Mise en place
+
+- Embeddings stockés avec des métadonnées de payload (source, langue, date).
+- Recherche filtrée pour restreindre par langue et fraîcheur.
+- Mesure des latences p50 / p95 sous requêtes concurrentes.
+
+## Premières observations
+
+- Les **filtres de payload sont peu coûteux** lorsqu'ils sont indexés ; non indexés, ils
+  s'effondrent.
+- Le rappel reste élevé avec les réglages HNSW par défaut ; ajuster `ef` échange surtout
+  de la latence contre du rappel.
+- Co-localiser Qdrant avec le conteneur de l'API supprime une part étonnante de latence de
+  queue.
+
+## Ensuite
+
+- Tester la quantization pour la pression mémoire.
+- Comparer la recherche hybride (mots-clés + vecteur) sur le même jeu de données.
+
+Les chiffres et un script reproductible suivront une fois le banc d'essai nettoyé.

@@ -1,0 +1,23 @@
+Agents are only as reliable as the context you give them. A model with no grounding will
+confidently invent APIs, prices and facts. Two tools change that: retrieval-augmented
+generation (RAG) and the Model Context Protocol (MCP).
+
+## RAG: grounding in your data
+
+RAG retrieves relevant documents from a vector store and injects them into the prompt, so
+the model answers from real data instead of memory. The quality of the retrieval matters
+more than the size of the model.
+
+## MCP: a clean interface to tools
+
+MCP standardizes how an agent talks to external tools and data sources. Instead of bespoke
+glue per integration, the agent speaks one protocol, which makes systems easier to audit
+and extend.
+
+## Putting them together
+
+- Use **MCP** to expose tools and data sources behind one interface.
+- Use **RAG** to ground answers in retrieved, verifiable context.
+- Keep a verification step: never let an unchecked agent action reach production.
+
+The goal isn't a smarter agent. It's a *trustworthy* one.

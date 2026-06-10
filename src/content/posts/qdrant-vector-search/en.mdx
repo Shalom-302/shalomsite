@@ -1,0 +1,23 @@
+Lab note: rough, reproducible, work in progress.
+
+I've been measuring how Qdrant behaves under realistic RAG workloads: many small queries
+with metadata filters, not just raw nearest-neighbour search.
+
+## Setup
+
+- Embeddings stored with payload metadata (source, language, date).
+- Filtered search to scope by language and recency.
+- Measured p50 / p95 latency under concurrent requests.
+
+## Early observations
+
+- Payload **filters are cheap** when indexed; unindexed filters fall off a cliff.
+- Recall stays high with HNSW defaults; tuning `ef` mostly trades latency for recall.
+- Co-locating Qdrant with the API container removes a surprising amount of tail latency.
+
+## Next
+
+- Test quantization for memory pressure.
+- Compare hybrid search (keyword + vector) on the same dataset.
+
+Numbers and a reproducible script will follow once the harness is cleaned up.

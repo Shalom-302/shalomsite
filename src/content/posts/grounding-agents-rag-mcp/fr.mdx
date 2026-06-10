@@ -1,0 +1,24 @@
+Un agent n'est fiable que dans la mesure du contexte qu'on lui fournit. Sans ancrage, un
+modèle invente avec assurance des APIs, des prix et des faits. Deux outils changent la
+donne : la génération augmentée par récupération (RAG) et le Model Context Protocol (MCP).
+
+## RAG : ancrer dans vos données
+
+Le RAG récupère les documents pertinents dans une base vectorielle et les injecte dans le
+prompt : le modèle répond à partir de données réelles plutôt que de sa mémoire. La qualité
+de la récupération compte plus que la taille du modèle.
+
+## MCP : une interface propre vers les outils
+
+MCP standardise la façon dont un agent dialogue avec des outils et des sources de données
+externes. Au lieu d'une colle sur mesure par intégration, l'agent parle un seul protocole,
+ce qui rend les systèmes plus faciles à auditer et à étendre.
+
+## Les combiner
+
+- Utiliser **MCP** pour exposer outils et sources derrière une interface unique.
+- Utiliser **RAG** pour ancrer les réponses dans un contexte récupéré et vérifiable.
+- Conserver une étape de vérification : ne jamais laisser une action d'agent non
+  contrôlée atteindre la production.
+
+L'objectif n'est pas un agent plus intelligent. C'est un agent *digne de confiance*.

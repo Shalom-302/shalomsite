@@ -1,0 +1,29 @@
+La plupart des projets FastAPI commencent de la même façon : un `main.py` propre, une
+route unique, de l'optimisme. Puis la production arrive : auth, migrations, stockage de
+fichiers, cache, déploiement. Et le départ propre se transforme en empilement de code de
+liaison, différent dans chaque projet.
+
+## La thèse
+
+Shaapi considère un backend comme un ensemble de conventions, pas comme une page blanche.
+Le framework livre des choix par défaut assumés pour que les parties ennuyeuses mais
+critiques soient déjà câblées et sécurisées.
+
+## Ce qui est câblé par défaut
+
+- **Auth** : JWT avec contrôle d'accès basé sur les rôles (RBAC).
+- **Migrations** : Alembic, versionnées dès le premier jour.
+- **Stockage** : MinIO pour le stockage objet.
+- **Cache / files** : Redis.
+- **Orchestration** : Docker Compose pour le local et le déploiement VPS.
+
+## Security-first
+
+Les valeurs par défaut comptent, car la plupart des failles viennent de ce que l'on
+oublie de configurer. En livrant RBAC, des secrets hachés et un CORS sain d'emblée, le
+chemin sécurisé devient aussi le plus court.
+
+> Le code généré par un framework doit pouvoir être enseigné. Si on ne peut pas
+> l'expliquer, on ne peut pas lui faire confiance en production.
+
+Cette note fait partie d'une série en cours. Retours et issues bienvenus sur GitHub.

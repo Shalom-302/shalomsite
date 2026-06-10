@@ -1,105 +1,135 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Brain, Home, FolderOpen, PlayCircle, FileText, MessageCircle } from 'lucide-react';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n";
+import { ThemeToggle } from "./ThemeToggle";
+import { LangToggle } from "./LangToggle";
 
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+type NavKey = keyof Dictionary["nav"];
+
+const NAV: { key: NavKey; path: string }[] = [
+  { key: "about", path: "/about" },
+  { key: "experience", path: "/experience" },
+  { key: "projects", path: "/projects" },
+  { key: "research", path: "/research" },
+  { key: "openSource", path: "/open-source" },
+  { key: "teaching", path: "/teaching" },
+  { key: "lab", path: "/lab" },
+  { key: "resume", path: "/resume" },
+  { key: "contact", path: "/contact" },
+];
+
+export default function Header({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLinks = [
-    { href: "/", label: "Accueil", icon: Home },
-    { href: "/projects", label: "Projets", icon: FolderOpen },
-    { href: "/formations", label: "Formations", icon: PlayCircle },
-    { href: "/articles", label: "Articles", icon: FileText },
-    { href: "/about", label: "À propos", icon: Brain },
-    { href: "/contact", label: "Contact", icon: MessageCircle },
-  ];
+  useEffect(() => setOpen(false), [pathname]);
+
+  const href = (p: string) => `/${locale}${p}`;
+  const isActive = (p: string) => pathname === href(p) || pathname.startsWith(href(p) + "/");
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-black/80 backdrop-blur-md shadow-lg border-b border-white/10' 
-          : 'bg-black/20 backdrop-blur-sm'
+    <header
+      className={`sticky top-0 z-50 border-b transition-colors ${
+        scrolled
+          ? "border-border bg-background/80 backdrop-blur-md"
+          : "border-transparent bg-background"
       }`}
     >
-      <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link 
-          href="/" 
-          className="flex items-center gap-2 text-2xl font-bold"
-          onClick={() => setIsMenuOpen(false)}
+      <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
+        <Link
+          href={href("")}
+          className="flex items-baseline gap-2 font-semibold tracking-tight"
         >
-          <Brain className="text-purple-400" size={28} />
-          <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-            KORTEX
+          <span>Shalom Tehe</span>
+          <span className="hidden font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground sm:inline">
+            ./eng
           </span>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => {
-            const Icon = link.icon;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
-              >
-                <Icon size={16} />
-                {link.label}
-              </Link>
-            );
-          })}
+        {/* Desktop nav */}
+        <div className="hidden items-center gap-1 lg:flex">
+          {NAV.map(({ key, path }) => (
+            <Link
+              key={key}
+              href={href(path)}
+              className={`rounded-md px-2.5 py-1.5 text-sm transition-colors ${
+                isActive(path)
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {dict.nav[key]}
+            </Link>
+          ))}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-white p-2"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="absolute top-full left-0 w-full bg-black/95 backdrop-blur-md shadow-lg border-b border-white/10 md:hidden"
-            >
-              <div className="container mx-auto px-4 py-4 space-y-2">
-                {navLinks.map((link) => {
-                  const Icon = link.icon;
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
-                    >
-                      <Icon size={18} />
-                      {link.label}
-                    </Link>
-                  );
-                })}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className="flex items-center gap-2">
+          <div className="hidden sm:block">
+            <LangToggle locale={locale} label={dict.common.toggleLanguage} />
+          </div>
+          <ThemeToggle label={dict.common.toggleTheme} />
+          <button
+            type="button"
+            aria-label={dict.common.toggleMenu}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border lg:hidden"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </nav>
-    </motion.header>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden border-t border-border bg-background lg:hidden"
+          >
+            <div className="mx-auto max-w-5xl px-5 py-3">
+              <div className="grid grid-cols-2 gap-1">
+                {NAV.map(({ key, path }) => (
+                  <Link
+                    key={key}
+                    href={href(path)}
+                    className={`rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent ${
+                      isActive(path) ? "text-foreground" : "text-muted-foreground"
+                    }`}
+                  >
+                    {dict.nav[key]}
+                  </Link>
+                ))}
+              </div>
+              <div className="mt-3 border-t border-border pt-3 sm:hidden">
+                <LangToggle locale={locale} label={dict.common.toggleLanguage} />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }
